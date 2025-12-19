@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Algovisualz/static/css/main.6423520f.chunk.css",
+    "main.js": "/Algovisualz/static/js/main.578bd140.chunk.js",
+    "main.js.map": "/Algovisualz/static/js/main.578bd140.chunk.js.map",
+    "runtime-main.js": "/Algovisualz/static/js/runtime-main.11e20f6a.js",
+    "runtime-main.js.map": "/Algovisualz/static/js/runtime-main.11e20f6a.js.map",
+    "static/js/2.8e683c52.chunk.js": "/Algovisualz/static/js/2.8e683c52.chunk.js",
+    "static/js/2.8e683c52.chunk.js.map": "/Algovisualz/static/js/2.8e683c52.chunk.js.map",
+    "index.html": "/Algovisualz/index.html",
+    "precache-manifest.cfddb3eed1de4110a69cb665767715dd.js": "/Algovisualz/precache-manifest.cfddb3eed1de4110a69cb665767715dd.js",
+    "service-worker.js": "/Algovisualz/service-worker.js",
+    "static/css/main.6423520f.chunk.css.map": "/Algovisualz/static/css/main.6423520f.chunk.css.map"
+  }
+}
