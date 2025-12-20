@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
+import {dfs, getNodesInShortestPathOrder2} from '../algorithms/dfs';
+import {bfs, getNodesInShortestPathOrder1} from '../algorithms/bfs';
 
 import './PathfindingVisualizer.css';
 
 const START_NODE_ROW = 10;
 const START_NODE_COL = 15;
-const FINISH_NODE_ROW = 10;
+const FINISH_NODE_ROW = 5;
 const FINISH_NODE_COL = 35;
 
 export default class PathfindingVisualizer extends Component {
@@ -55,6 +57,7 @@ export default class PathfindingVisualizer extends Component {
   }
 
   animateShortestPath(nodesInShortestPathOrder) {
+    if(nodesInShortestPathOrder.length==0)return ;
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
@@ -72,6 +75,26 @@ export default class PathfindingVisualizer extends Component {
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
+  visualizebfs() {
+    const {grid} = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodesInOrder = bfs(grid, startNode, finishNode);
+    let nodesInShortestPathOrder=[];
+    if(finishNode.distance!=Infinity){
+     nodesInShortestPathOrder = getNodesInShortestPathOrder1(finishNode);
+    }
+    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    
+  }
+  visualizedfs() {
+    const {grid} = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodesInOrder = dfs(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder2(finishNode);
+    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+  }
 
   render() {
     const {grid, mouseIsPressed} = this.state;
@@ -80,6 +103,12 @@ export default class PathfindingVisualizer extends Component {
       <>
         <button onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
+        </button>
+        <button onClick={() => this.visualizebfs()}>
+          Visualize Bfs's Algorithm
+        </button>
+         <button onClick={() => this.visualizedfs()}>
+          Visualize Dfs's Algorithm
         </button>
         <div className="grid">
           {grid.map((row, rowIdx) => {
