@@ -57,7 +57,7 @@ export default class PathfindingVisualizer extends Component {
   }
 
   animateShortestPath(nodesInShortestPathOrder) {
-    if(nodesInShortestPathOrder.length==0)return ;
+    if(nodesInShortestPathOrder.length===0)return ;
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
@@ -81,7 +81,7 @@ export default class PathfindingVisualizer extends Component {
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodesInOrder = bfs(grid, startNode, finishNode);
     let nodesInShortestPathOrder=[];
-    if(finishNode.distance!=Infinity){
+    if(finishNode.distance!==Infinity){
      nodesInShortestPathOrder = getNodesInShortestPathOrder1(finishNode);
     }
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
